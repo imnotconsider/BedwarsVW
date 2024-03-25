@@ -1,0 +1,23 @@
+shop:
+  villages:
+    items:
+      1:
+        location: world 100 100 100
+      2:
+        location: world 200 100 100
+  gui:
+    0:
+      item: WOOL
+      amount: 16
+      price: 4
+      material: BRICK
+    1:
+      item: SHEARS
+      amount: 1
+      price: 1
+      material: IRON_INGOT
+    2:
+      item: DIAMOND_SWORD
+      amount: 1
+      price: 3
+      material: GOLD_INGOT

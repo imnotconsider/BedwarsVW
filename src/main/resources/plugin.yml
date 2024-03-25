@@ -1,0 +1,13 @@
+name: BedwarsTest
+version: '${project.version}'
+main: me.imnotconsider.bedwarstest.BedwarsTestPlugin
+
+commands:
+  test:
+    usage: test
+  gameinfo:
+    aliases: gi
+    usage: gameinfo
+  game:
+    aliases: gamemanager
+    usage: game
