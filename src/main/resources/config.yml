@@ -1,30 +1,4 @@
 database:
-  username:
-  password:
-
-game:
-  world: world
-  min_players: 2
-  max_players: 8
-
-  spawners:
-    1:
-      delay: 20
-      location: world 100 100 100
-      material: BRICK
-      name: "&6Бронза"
-    2:
-      delay: 20
-      location: world 200 100 100
-      material: BRICK
-      name: "&6Бронза"
-
-teams:
-  team1:
-    name: "team1 name"
-    color: "c"
-    spawn_location: world 100 100 100
-  team2:
-    name: "team2 name"
-    color: "f"
-    spawn_location: world 120 100 120
+  username: imnotconsider
+  password: iamroot
+  url: localhost:5432/bedwars

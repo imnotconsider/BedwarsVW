@@ -27,12 +27,20 @@ public class ShopClickListener implements Listener {
 
         ItemStack itemStack = event.getCurrentItem();
         net.minecraft.server.v1_8_R3.ItemStack nmsCopy = CraftItemStack.asNMSCopy(itemStack);
+        if (nmsCopy == null) {
+            return;
+        }
         NBTTagCompound nbtTagCompound = nmsCopy.getTag();
         if (nbtTagCompound == null) {
             return;
         }
+
         Material material = Material.matchMaterial(nbtTagCompound.getString("price_material"));
         int price = nbtTagCompound.getInt("price");
+
+        if (price == 0) {
+            return;
+        }
 
         if (!isPurchasable(player, material, price)) {
             player.sendMessage(" §c недостаточно материалов для покупки");

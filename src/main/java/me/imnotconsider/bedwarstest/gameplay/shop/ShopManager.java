@@ -27,9 +27,11 @@ public class ShopManager {
         shops = new ArrayList<>();
 
         loadShops();
-        log.info("Магазины загружены.");
+        log.info("shops are loaded.");
 
         loadShopGui();
+        log.info("shop gui is loaded.");
+        log.info("shop manager is loaded");
     }
 
     private void loadShops() {

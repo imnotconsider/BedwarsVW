@@ -5,6 +5,8 @@ import me.imnotconsider.bedwarstest.BedwarsTestPlugin;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.postgresql.ds.PGSimpleDataSource;
+import org.postgresql.util.PSQLException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,18 +36,32 @@ public class DatabaseConnection {
         connectionPool = new ConnectionPool("jdbc:postgresql://" + configurationSection.getString("url"),
                 configurationSection.getString("username"),
                 configurationSection.getString("password"));
-        log.info("создан пул подключений");
+        log.info("arena manager is loaded");
+        log.info("a connection pool has been created");
 
         initializeDatabases();
-        log.info("бд инициализирована");
+        log.info("database is loaded");
+    }
+
+    public ResultSet query(String sqlQuery, Object... args) throws SQLException, InterruptedException {
+        PreparedStatement statement = connectionPool.getConnection().getConnection().prepareStatement(sqlQuery);
+        for (int i = 0; i < args.length; i++) {
+            statement.setObject(i + 1, args[i]);
+        }
+        try {
+            return statement.executeQuery();
+        } catch (PSQLException e) {
+            log.debug("some kind of mistake, but it worked");
+            return null;
+        }
     }
 
     public void executeQuery(String sqlQuery) {
-        Connection conn = null;
+        PGSimpleDataSource conn = null;
         try {
             conn = connectionPool.getConnection();
             if (conn != null) {
-                conn.createStatement().execute(sqlQuery);
+                conn.getConnection().createStatement().executeQuery(sqlQuery);
                 log.info("sql query executed successfully: {}", sqlQuery);
             } else {
                 log.warn("error: failed to get connection from the pool.");
@@ -69,7 +85,6 @@ public class DatabaseConnection {
         String[] queries = sb.toString().split(";");
         for (String query : queries) {
             executeQuery(query);
-            log.info(query);
         }
     }
 }

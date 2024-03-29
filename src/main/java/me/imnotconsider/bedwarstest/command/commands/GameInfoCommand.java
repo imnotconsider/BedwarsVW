@@ -27,6 +27,7 @@ public class GameInfoCommand implements CommandExecutor {
         sender.sendMessage("teams: " + gameManager.getGame().getTeams());
         sender.sendMessage("gamestatus: " + gameManager.getGameStatus());
         sender.sendMessage("waiting: " + gameManager.getWaitingManager().getWaiting().getPlayers());
+        sender.sendMessage("teams: " + gameManager.getTeamManager().getTeams());
         return true;
     }
 }

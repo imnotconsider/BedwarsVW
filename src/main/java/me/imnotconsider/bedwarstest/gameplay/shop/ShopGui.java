@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
 @Log4j2
 public class ShopGui {
-    @Getter
     private final Inventory shop;
     private final Map<Integer, ItemStack> items;
 
@@ -37,6 +37,7 @@ public class ShopGui {
             Material material = Material.matchMaterial(section.getString("material"));
 
             itemStack.setAmount(amount);
+            items.put(slot, itemStack);
 
             ItemMeta itemMeta = itemStack.getItemMeta();
             ArrayList<String> lore = new ArrayList<>();
@@ -56,7 +57,6 @@ public class ShopGui {
 
             itemStack = CraftItemStack.asBukkitCopy(nmsCopy);
 
-            items.put(slot, itemStack);
             shop.setItem(slot, itemStack);
         }
     }

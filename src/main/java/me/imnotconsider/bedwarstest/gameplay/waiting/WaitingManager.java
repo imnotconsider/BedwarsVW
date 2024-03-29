@@ -20,15 +20,15 @@ public class WaitingManager {
     public WaitingManager(BedwarsTestPlugin plugin, GameManager gameManager) {
         File file = new File(plugin.getDataFolder() + "\\arena.yml");
         FileConfiguration arenaConfig = YamlConfiguration.loadConfiguration(file);
-        ConfigurationSection configurationSection = arenaConfig.getConfigurationSection("game.waiting");
+        ConfigurationSection configurationSection = arenaConfig.getConfigurationSection("arena.waiting");
 
         waiting = new Waiting(configurationSection);
         this.gameManager = gameManager;
 
-        log.info("Система очереди загружена.");
+        log.info("waiting manager is loaded");
     }
 
-    public void addPlayerToWaiting(Player player) {
+    public void addPlayer(Player player) {
         if (waiting.getPlayers().size() < gameManager.getGame().getArena().getMaxPlayers()) {
             waiting.addPlayerToWaiting(player);
         }
@@ -36,5 +36,9 @@ public class WaitingManager {
         if (waiting.getPlayers().size() >= gameManager.getGame().getArena().getMinPlayers()) {
             gameManager.startGame();
         }
+    }
+
+    public void remove(Player player) {
+        waiting.remove(player);
     }
 }

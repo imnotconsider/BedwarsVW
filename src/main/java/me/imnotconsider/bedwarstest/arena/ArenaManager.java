@@ -17,9 +17,9 @@ public class ArenaManager {
     public ArenaManager(BedwarsTestPlugin plugin) {
         File file = new File(plugin.getDataFolder() + "\\arena.yml");
         FileConfiguration arenaConfig = YamlConfiguration.loadConfiguration(file);
-        ConfigurationSection configurationSection = arenaConfig.getConfigurationSection("game");
+        ConfigurationSection configurationSection = arenaConfig.getConfigurationSection("arena");
 
         arena = new Arena(configurationSection);
-        log.info("Арена создана.");
+        log.info("arena manager is loaded");
     }
 }

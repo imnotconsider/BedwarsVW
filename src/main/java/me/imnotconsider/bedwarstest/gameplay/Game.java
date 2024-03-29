@@ -2,6 +2,7 @@ package me.imnotconsider.bedwarstest.gameplay;
 
 import lombok.Data;
 import me.imnotconsider.bedwarstest.arena.Arena;
+import me.imnotconsider.bedwarstest.gameplay.team.Team;
 
 import java.util.ArrayList;
 

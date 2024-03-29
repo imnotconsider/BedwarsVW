@@ -21,4 +21,12 @@ public class Waiting {
     public void addPlayerToWaiting(Player player) {
         players.add(player);
     }
+
+    public void clear() {
+        players.clear();
+    }
+
+    public void remove(Player player) {
+        players.remove(player);
+    }
 }

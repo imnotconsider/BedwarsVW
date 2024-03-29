@@ -28,7 +28,7 @@ public class Arena {
         for (String spawnerSection : spawnersSection.getKeys(false)) {
             spawners.add(new MaterialSpawner(spawnersSection.getConfigurationSection(spawnerSection)));
         }
-
-        log.info("Спавнеры ресурсов загружены.");
+        log.info("resource spawners are loaded.");
+        log.info("arena is loaded.");
     }
 }
